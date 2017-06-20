@@ -1,6 +1,7 @@
 package smp.components.staff;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Set;
 
 import smp.ImageIndex;
@@ -14,6 +15,7 @@ import smp.components.staff.sequences.StaffNoteLine;
 import smp.components.topPanel.ButtonLine;
 import smp.stateMachine.Settings;
 import smp.stateMachine.StateMachine;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -103,8 +105,10 @@ public class StaffInstrumentEventHandler implements EventHandler<Event> {
         il = i;
         position = pos;
         line = l;
-        theImages = stPane.getChildren();
-        accList = acc.getChildren();
+        theImages = FXCollections.synchronizedObservableList(
+                stPane.getChildren());
+        accList = FXCollections.synchronizedObservableList(
+                acc.getChildren());
         theStaff = s;
         accSilhouette = new ImageView();
         if ((Settings.debug & 0b10) == 0b10) {

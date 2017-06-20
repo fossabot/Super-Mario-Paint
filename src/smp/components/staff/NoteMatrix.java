@@ -8,6 +8,7 @@ import smp.components.staff.sequences.StaffAccidental;
 import smp.components.staff.sequences.StaffNote;
 import smp.components.staff.sequences.StaffNoteLine;
 import smp.stateMachine.StateMachine;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
@@ -262,8 +263,12 @@ public class NoteMatrix {
         ArrayList<StackPane> nt = matrix.get(index);
         ArrayList<StackPane> ac = accMatrix.get(index);
         for (int i = 0; i < Values.NOTES_IN_A_LINE; i++) {
-            ObservableList<Node> ntList = nt.get(i).getChildren();
-            ObservableList<Node> acList = ac.get(i).getChildren();
+            ObservableList<Node> ntList =
+                    FXCollections.synchronizedObservableList(
+                            nt.get(i).getChildren());
+            ObservableList<Node> acList =
+                    FXCollections.synchronizedObservableList(
+                            ac.get(i).getChildren());
             ntList.clear();
             acList.clear();
         }
@@ -281,11 +286,13 @@ public class NoteMatrix {
         ArrayList<StaffNote> st = stl.getNotes();
         for (StaffNote s : st) {
             StackPane[] noteAndAcc = getNote(index, s.getPosition());
-            noteAndAcc[0].getChildren().add(s);
+            FXCollections.synchronizedObservableList(
+                    noteAndAcc[0].getChildren()).add(s);
             StaffAccidental accidental = new StaffAccidental(s);
             accidental.setImage(il.getSpriteFX(Staff.switchAcc(s
                     .getAccidental())));
-            noteAndAcc[1].getChildren().add(accidental);
+            FXCollections.synchronizedObservableList(
+                    noteAndAcc[1].getChildren()).add(accidental);
 
             if (s.muteNoteVal() == 0) {
                 s.setImage(il.getSpriteFX(s.getInstrument().imageIndex()));
