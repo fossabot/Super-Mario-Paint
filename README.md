@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fsuperusercode%2FSuper-Mario-Paint.svg?type=shield)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fsuperusercode%2FSuper-Mario-Paint?ref=badge_shield)
+
 Super Mario Paint
 ==========
 * Current Version: 1.0.4
@@ -102,3 +104,7 @@ Tasklist:
 * User interface draft (done - August 17, 2012)
 * JavaFX migration (done - August 17, 2012)
 * Window appears (done - August 12, 2012)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fsuperusercode%2FSuper-Mario-Paint.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fsuperusercode%2FSuper-Mario-Paint?ref=badge_large)
